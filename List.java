@@ -44,7 +44,7 @@ public interface List {
 	 * @return the element or an appropriate error message,
 	 *         encapsulated in a ReturnObject
 	 */
-	public int get(int index);
+	public ReturnObject get(int index);
 
 	/**
 	 * Returns the elements at the given position and removes it
@@ -58,7 +58,7 @@ public interface List {
 	 * @return the element or an appropriate error message,
 	 *         encapsulated in a ReturnObject
 	 */
-	public int remove(int index);
+	public ReturnObject remove(int index);
 
 	/**
 	 * Adds an element to the list, inserting it at the given
@@ -78,7 +78,7 @@ public interface List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         the item added or containing an appropriate error message
 	 */
-	public int add(int index, Object item);
+	public ReturnObject add(int index, Object item);
 
 	/**
 	 * Adds an element at the end of the list.
@@ -91,5 +91,5 @@ public interface List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         the item added or containing an appropriate error message
 	 */
-	public int add(Object item);
+	public ReturnObject add(Object item);
 }
