@@ -1,11 +1,26 @@
 public class ReturnObjectImpl implements ReturnObject {
+	private Object returnObj;
+	private ErrorMessage theMsg;
+
+	public ReturnObjectImpl ( Object obj) {
+		returnObj = obj;
+		theMsg    = null;
+	}
+
+	public ReturnObjectImpl ( ErrorMessage message ) {
+		theMsg    = message;
+		returnObj = null;
+	}
 	/**
 	 * Returns whether there has been an error
 	 * @return whether there has been an error
 	 */
 	public boolean hasError()
 	{
-		return false;
+		if ( theMsg != null )
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -13,17 +28,15 @@ public class ReturnObjectImpl implements ReturnObject {
 	 *
 	 * This method must return NO_ERROR if and only if
 	 * {@hasError} returns false.
-	 *
+
 	 * @return the error message
 	 */
 	public ErrorMessage getError()
 	{
-		if (!hasError()) {
-			System.out.println (" NO_ERROR");
-			return null;
+		if (hasError() ) {
+			return theMsg;
 		} else
-		System.out.println ( " There has been an Error");
-			return null;
+			return ErrorMessage.NO_ERROR;
 	}
 	/**
 	 * Returns the object wrapped in this ReturnObject, i.e. the
@@ -41,9 +54,10 @@ public class ReturnObjectImpl implements ReturnObject {
 	public Object getReturnValue()
 	{
 		if ( !hasError() ) {
-			System.out.println ( " There has been an Error");
-
+			return returnObj;
+		} else
+		{
+			return theMsg;
 		}
-		return null;
 	}
 }
