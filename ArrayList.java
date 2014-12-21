@@ -2,7 +2,7 @@ public class ArrayList implements List
 {
 	private static int ARRAY_SIZE = 20;
 	private int arraySize;
-	private Object theArray[];
+	private Object[] theArray;
 
 	public ArrayList () {
 		theArray  = new Object [ARRAY_SIZE];
