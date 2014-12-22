@@ -1,6 +1,6 @@
 public class LinkedList implements List
 {
-	private Node theHead; 		// reference to the head node.
+	public Node theHead; 		// reference to the head node.
 
 	public LinkedList()
 	{
