@@ -1,13 +1,16 @@
-public class ReturnObjectImpl implements ReturnObject {
+public class ReturnObjectImpl implements ReturnObject
+{
 	private Object returnObj;
 	private ErrorMessage theMsg;
 
-	public ReturnObjectImpl ( Object obj) {
+	public ReturnObjectImpl ( Object obj)
+	{
 		returnObj = obj;
 		theMsg    = null;
 	}
 
-	public ReturnObjectImpl ( ErrorMessage message ) {
+	public ReturnObjectImpl ( ErrorMessage message )
+	{
 		theMsg    = message;
 		returnObj = null;
 	}
@@ -33,7 +36,8 @@ public class ReturnObjectImpl implements ReturnObject {
 	 */
 	public ErrorMessage getError()
 	{
-		if (hasError() ) {
+		if (hasError() )
+		{
 			return theMsg;
 		} else
 			return ErrorMessage.NO_ERROR;
@@ -53,7 +57,8 @@ public class ReturnObjectImpl implements ReturnObject {
 	 */
 	public Object getReturnValue()
 	{
-		if ( !hasError() ) {
+		if ( !hasError() )
+		{
 			return returnObj;
 		} else
 		{
