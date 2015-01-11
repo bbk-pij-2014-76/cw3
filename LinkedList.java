@@ -1,67 +1,116 @@
 public class LinkedList implements List
 {
-	public Node theHead; 		// reference to the head node.
-
-	public LinkedList()
+	public class Node
 	{
-		// this is an empty list, so the reference to the head node
-		// is set to a new node with no data
-		theHead    = null;
+		private int index;
+		private Object item;
+		private Node next;
+		public Node (int index, Object item)
+		{
+			this.index = index;
+			this.item  = item;
+				  next = null;
+		}
+		public Object getItem()
+		{
+			return item;
+		}
+		public void setItem ( Object item)
+		{
+			this.item = item;
+		}
+		public void add ( Node node)
+		{
+			if (next == null)
+				next = node;
+			else
+				next.add(node);
+		}
+		public void add ( int index, Node node)
+		{
+			if (next.index == index)
+			{
+				 Node temp = next;
+				      next = node;
+				  node.next= temp;
+		    node.next.index= this.index+1;
+			}
+			else
+				next.add(index,node);
+		}
+		public Node getNode( int index)
+		{
+			if (next.index == index)
+				return next;
+			else
+				return next.getNode(index);
+		}
+		public Node remove ( int index)
+		{
+			if (next.index == index)
+			{
+				 Node temp = next;
+				 if (next.next != null)
+				 {
+						  next=next.next;
+			        next.index= this.index-1;
+				 } else
+				 {
+					next = null;
+				 }
+				 	return temp;
+			}
+			else
+				return next.remove(index);
+		}
 	}
 
-	public boolean isEmpty ()
+	private Node theHead;
+	private int indexValue;
+	public LinkedList ()
 	{
-		if (theHead == null)
-			return true;
-		else
-			return false;
+		theHead = new Node (-1,null);
+	 indexValue = 0;
 	}
-	public int countNodes ( Node node )
+
+	public ReturnObject add(Object item)
 	{
-		if ( node != null )
-			return 1 + countNodes (node.getNext());
+			return null;
+	}
+	public ReturnObject add(int index, Object item)
+	{
+			return null;
+	}
+	public ReturnObject get(int index)
+	{
+		if (isEmpty() )
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		if ((index < 0) || (index >= size()))
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		else
-			return 0;
+			return new ReturnObjectImpl(theHead.getNode(index).getItem());
+	}
+	public ReturnObject remove (int index)
+	{
+		if (isEmpty() )
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		if ((index < 0) || (index >= size()))
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		else
+		{
+			indexValue--;
+			return new ReturnObjectImpl(theHead.remove(index).getItem());
+		}
 	}
 	public int size()
 	{
-		return countNodes(theHead);
+		return indexValue;
 	}
-
-	public ReturnObject get(int index)
+	public boolean isEmpty()
 	{
-		if (index < 0 || index >= size() )
-			return new ReturnObjectImpl ( ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		else {
-			Node theNode = theHead;
-			for ( int i = 0; i < index ; i++)
-				theNode = theNode.getNext();
-				return  new ReturnObjectImpl (theNode.getData());
-		}
-	}
-
-	public ReturnObject remove(int index)
-	{
-		return new ReturnObjectImpl ( ErrorMessage.INDEX_OUT_OF_BOUNDS);
-	}
-	public ReturnObject add(Object item)
-	{
-		return add (item);
-	}
-	public ReturnObject add(int index, Object item) {
-		if ( item != null )
-		{
-			if ( index < 0 || index > size() )
-				return new ReturnObjectImpl ( ErrorMessage.INDEX_OUT_OF_BOUNDS);
-			else
-			{
-				if ( theHead == null && index == 0)
-				{	NodeImpl newNode = new NodeImpl(item);
-							theHead  = newNode;
-				}
-			}
-
-		}
-		return new ReturnObjectImpl (theHead);
+		if ( indexValue == 0)
+			return true;
+		else
+			return false;
 	}
 }
