@@ -4,7 +4,8 @@ public class ArrayList implements List
 	private int arraySize;
 	public Object[] theArray;
 
-	public ArrayList () {
+	public ArrayList ()
+	{
 		theArray  = new Object [ARRAY_SIZE];
 		arraySize = 0;
 	}
@@ -24,9 +25,11 @@ public class ArrayList implements List
 
 	public ReturnObject get(int index)
 	{
-		if ( index < 0 || index >= arraySize ) {
+		if ( index < 0 || index >= arraySize )
+		{
 			return new ReturnObjectImpl (ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else {
+		} else
+		{
 			return new ReturnObjectImpl(theArray[index]);
 		}
 	}
@@ -50,12 +53,16 @@ public class ArrayList implements List
 	}
 	public ReturnObject add(int index, Object item)
 	{
-		if ( index < 0 || index >= arraySize ) {
+		if ( index < 0 || index >= arraySize )
+		{
 			return new ReturnObjectImpl (ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (item == null ) {
+		} else if (item == null )
+		{
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
-		} else {
-			for ( int i=arraySize ; i > index ; i-- ) {
+		} else
+		{
+			for ( int i=arraySize ; i > index ; i-- )
+			{
 				theArray [i+1] = theArray [i];
 			}
 			theArray [index] = item;
