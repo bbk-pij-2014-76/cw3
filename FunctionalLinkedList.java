@@ -20,8 +20,8 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList
 		Node newNode = theHead;
 		for ( int i=0 ; i<this.size()-1; i++)
 		{
-			myList.add(newNode.getNext());
-			newNode = newNode.getNext();
+			myList.add(newNode.next);
+			newNode = newNode.next;
 		}
 		}
 		return myList;
