@@ -4,7 +4,7 @@ public class LinkedList implements List
 	{
 		private int index;
 		private Object item;
-		private Node next;
+		public Node next;
 		public Node (int index, Object item)
 		{
 			this.index = index;
@@ -65,12 +65,12 @@ public class LinkedList implements List
 		}
 	}
 
-	private Node theHead;
+	public Node theHead;
 	private int indexValue;
 	public LinkedList ()
 	{
 		theHead = new Node (-1,null);
-	 indexValue = 0;
+	 	indexValue = 0;
 	}
 
 	public ReturnObject add(Object item)
