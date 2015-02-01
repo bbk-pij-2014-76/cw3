@@ -25,6 +25,9 @@ public class ArrayList implements List
 
 	public ReturnObject get(int index)
 	{
+		if ( isEmpty() )
+			return new ReturnObjectImpl (ErrorMessage.EMPTY_STRUCTURE);
+
 		if ( index < 0 || index >= arraySize )
 		{
 			return new ReturnObjectImpl (ErrorMessage.INDEX_OUT_OF_BOUNDS);
