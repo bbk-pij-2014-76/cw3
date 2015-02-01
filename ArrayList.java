@@ -4,6 +4,12 @@ public class ArrayList implements List
 	private int arraySize;
 	public Object[] theArray;
 
+	/**
+	Constructor for the class ArrayList
+	It creates an array called 'theArray' and its size is set to 20
+	When an ArrayList will be created then the index of first object inserted will be 0
+	*/
+
 	public ArrayList ()
 	{
 		theArray  = new Object [ARRAY_SIZE];
@@ -42,6 +48,10 @@ public class ArrayList implements List
 		if ( theArray[index] == null )
 		{
 			return new ReturnObjectImpl (ErrorMessage.EMPTY_STRUCTURE);
+		}
+		if ( index < 0 || index >= arraySize )
+		{
+			return new ReturnObjectImpl (ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else
 		{
